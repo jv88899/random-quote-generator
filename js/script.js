@@ -38,12 +38,20 @@ const quotes = [
     // year: 1999
   }
 ];
+const backgroundColors = ['red', 'blue', 'orange', 'green', 'purple', 'gray'];
 
 // create getRandomQuote function
 const getRandomQuote = () => {
   let numberOfQuotes = quotes.length;
   let randomNumber = Math.floor(Math.random() * numberOfQuotes);
   return quotes[randomNumber];
+}
+
+// generate random background color
+const getBackgroundColor = () => {
+  let numberOfColors = backgroundColors.length;
+  let randomNumber = Math.floor(Math.random() * numberOfQuotes);
+  return backgroundColors[randomNumber];
 }
 
 // create printQuote function
@@ -60,19 +68,12 @@ const printQuote = () => {
   htmlString += '</p>';
   document.querySelector('#quote-box').innerHTML = htmlString;
 }
-printQuote();
 
+// change background color
+const changeBackgroundColor = () => {
+  const newBackgroundColor = getBackgroundColor();
+  document.querySelector('body').style.backgroundColor = newBackgroundColor;
+}
 
-
-
-/***
-  When the "Show another quote" button is clicked, the event listener 
-  below will be triggered, and it will call, or "invoke", the `printQuote` 
-  function. So do not make any changes to the line of code below this 
-  comment.
-***/
-
+// event handler to change quote
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
-
-
-// Remember to delete the comments that came with this file, and replace them with your own code comments.
