@@ -89,5 +89,8 @@ const printQuote = () => {
   document.querySelector('#quote-box').innerHTML = htmlString;
 }
 
+// change quote and background color automatically after 30 seconds
+const changeQuoteAndBackgroundColor = setInterval(printQuote, 30000);
+
 // event handler to change quote
 document.getElementById('loadQuote').addEventListener("click", printQuote, false);
