@@ -50,7 +50,7 @@ const getRandomQuote = () => {
 // generate random background color
 const getBackgroundColor = () => {
   let numberOfColors = backgroundColors.length;
-  let randomNumber = Math.floor(Math.random() * numberOfQuotes);
+  let randomNumber = Math.floor(Math.random() * numberOfColors);
   return backgroundColors[randomNumber];
 }
 
@@ -75,5 +75,11 @@ const changeBackgroundColor = () => {
   document.querySelector('body').style.backgroundColor = newBackgroundColor;
 }
 
+// function to print quotes and change background color
+const render = () => {
+  printQuote();
+  changeBackgroundColor();
+}
+
 // event handler to change quote
-document.getElementById('loadQuote').addEventListener("click", printQuote, false);
+document.getElementById('loadQuote').addEventListener("click", render, false);
