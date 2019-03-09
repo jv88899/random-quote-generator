@@ -54,32 +54,40 @@ const getBackgroundColor = () => {
   return backgroundColors[randomNumber];
 }
 
-// create printQuote function
-const printQuote = () => {
-  const quote = getRandomQuote();
-  let htmlString = '<p class="quote">' + quote.quote + '</p>';
-  htmlString += '<p class="source">' + quote.source;
-  if (quote.citation) {
-    htmlString += '<span class="citation">' + quote.source + '</span>';
-  }
-  if (quote.year) {
-    htmlString += '<span class="year">' + quote.year + '</span>';
-  }
-  htmlString += '</p>';
-  document.querySelector('#quote-box').innerHTML = htmlString;
-}
-
-// change background color
+// function to change backgroundColor
 const changeBackgroundColor = () => {
   const newBackgroundColor = getBackgroundColor();
   document.querySelector('body').style.backgroundColor = newBackgroundColor;
 }
 
-// function to print quotes and change background color
-const render = () => {
-  printQuote();
+// create printQuote function
+const printQuote = () => {
+  // get random quote
+  const quote = getRandomQuote();
+
+  // build html string
+  let htmlString = '<p class="quote">' + quote.quote + '</p>';
+  htmlString += '<p class="source">' + quote.source;
+  
+  // add the citation if citation property exists
+  if (quote.citation) {
+    htmlString += '<span class="citation">' + quote.source + '</span>';
+  }
+
+  // add the year if year property exists
+  if (quote.year) {
+    htmlString += '<span class="year">' + quote.year + '</span>';
+  }
+
+  // complete html string
+  htmlString += '</p>';
+  
+  // change background color
   changeBackgroundColor();
+
+  // change quotes
+  document.querySelector('#quote-box').innerHTML = htmlString;
 }
 
 // event handler to change quote
-document.getElementById('loadQuote').addEventListener("click", render, false);
+document.getElementById('loadQuote').addEventListener("click", printQuote, false);
